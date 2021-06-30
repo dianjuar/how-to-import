@@ -19,6 +19,13 @@
     }
   },
   "projects": {
+    "directly-app": {
+      "tags": []
+    },
+    "directly-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["directly-app"]
+    },
     "directly-lib": {
       "tags": []
     }

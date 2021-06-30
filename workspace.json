@@ -1,6 +1,108 @@
 {
   "version": 2,
   "projects": {
+    "directly-app": {
+      "root": "apps/directly-app",
+      "sourceRoot": "apps/directly-app/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/directly-app",
+            "index": "apps/directly-app/src/index.html",
+            "main": "apps/directly-app/src/main.tsx",
+            "polyfills": "apps/directly-app/src/polyfills.ts",
+            "tsConfig": "apps/directly-app/tsconfig.app.json",
+            "assets": [
+              "apps/directly-app/src/favicon.ico",
+              "apps/directly-app/src/assets"
+            ],
+            "styles": ["apps/directly-app/src/styles.css"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/directly-app/src/environments/environment.ts",
+                  "with": "apps/directly-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "10mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "directly-app:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "directly-app:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/directly-app/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/directly-app"],
+          "options": {
+            "jestConfig": "apps/directly-app/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "directly-app-e2e": {
+      "root": "apps/directly-app-e2e",
+      "sourceRoot": "apps/directly-app-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/directly-app-e2e/cypress.json",
+            "tsConfig": "apps/directly-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "directly-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "directly-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/directly-app-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
     "directly-lib": {
       "root": "libs/directly-lib",
       "sourceRoot": "libs/directly-lib/src",
@@ -24,6 +126,25 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "css",
+        "linter": "eslint",
+        "strict": true,
+        "babel": true
+      },
+      "component": {
+        "style": "css"
+      },
+      "library": {
+        "style": "css",
+        "linter": "eslint",
+        "strict": true
+      }
+    }
+  },
+  "defaultProject": "directly-app"
 }
