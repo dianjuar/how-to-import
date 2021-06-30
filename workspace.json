@@ -155,6 +155,46 @@
           }
         }
       }
+    },
+    "front-lib": {
+      "root": "libs/front-lib",
+      "sourceRoot": "libs/front-lib/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/front-lib",
+            "tsConfig": "libs/front-lib/tsconfig.lib.json",
+            "project": "libs/front-lib/package.json",
+            "entryFile": "libs/front-lib/src/index.ts",
+            "external": ["react/jsx-runtime"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/front-lib/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/front-lib/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/front-lib"],
+          "options": {
+            "jestConfig": "libs/front-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

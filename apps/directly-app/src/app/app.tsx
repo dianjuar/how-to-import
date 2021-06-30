@@ -1,4 +1,4 @@
-import { small } from '@fake-npm/common-js-lib';
+import { small } from '@fake-npm/frontend-lib';
 
 export function App() {
   return <div>{small}</div>;
