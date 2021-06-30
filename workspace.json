@@ -1,6 +1,28 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "directly-lib": {
+      "root": "libs/directly-lib",
+      "sourceRoot": "libs/directly-lib/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/directly-lib/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/directly-lib"],
+          "options": {
+            "jestConfig": "libs/directly-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   }

@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@how-to-import-workspace/directly-lib": [
+        "libs/directly-lib/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
