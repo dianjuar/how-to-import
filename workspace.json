@@ -1,6 +1,38 @@
 {
   "version": 2,
   "projects": {
+    "common-js-lib": {
+      "root": "libs/common-js-lib",
+      "sourceRoot": "libs/common-js-lib/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/common-js-lib/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common-js-lib"],
+          "options": {
+            "jestConfig": "libs/common-js-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/common-js-lib",
+            "tsConfig": "libs/common-js-lib/tsconfig.lib.json",
+            "packageJson": "libs/common-js-lib/package.json",
+            "main": "libs/common-js-lib/src/index.ts",
+            "assets": ["libs/common-js-lib/*.md"]
+          }
+        }
+      }
+    },
     "directly-app": {
       "root": "apps/directly-app",
       "sourceRoot": "apps/directly-app/src",

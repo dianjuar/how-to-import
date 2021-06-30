@@ -19,6 +19,9 @@
     }
   },
   "projects": {
+    "common-js-lib": {
+      "tags": []
+    },
     "directly-app": {
       "tags": []
     },

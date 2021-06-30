@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@fake-npm/common-js-lib": ["libs/common-js-lib/src/index.ts"],
       "@how-to-import-workspace/directly-lib": [
         "libs/directly-lib/src/index.ts"
       ]
