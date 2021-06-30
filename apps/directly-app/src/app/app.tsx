@@ -1,7 +1,7 @@
-import * as all from '@fake-npm/common-js-lib';
+import { small } from '@fake-npm/common-js-lib';
 
 export function App() {
-  return <div>{all.small}</div>;
+  return <div>{small}</div>;
 }
 
 export default App;
