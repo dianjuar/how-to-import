@@ -32,6 +32,9 @@
     "directly-lib": {
       "tags": []
     },
+    "front-angular-lib": {
+      "tags": []
+    },
     "front-lib": {
       "tags": []
     }

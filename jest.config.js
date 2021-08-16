@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/apps/directly-app',
     '<rootDir>/libs/common-js-lib',
     '<rootDir>/libs/front-lib',
+    '<rootDir>/libs/front-angular-lib',
   ],
 };

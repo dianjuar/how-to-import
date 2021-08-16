@@ -156,6 +156,47 @@
         }
       }
     },
+    "front-angular-lib": {
+      "projectType": "library",
+      "root": "libs/front-angular-lib",
+      "sourceRoot": "libs/front-angular-lib/src",
+      "prefix": "how-to-import-workspace",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:package",
+          "outputs": ["dist/libs/front-angular-lib"],
+          "options": {
+            "project": "libs/front-angular-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/front-angular-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/front-angular-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/front-angular-lib"],
+          "options": {
+            "jestConfig": "libs/front-angular-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/front-angular-lib/src/**/*.ts",
+              "libs/front-angular-lib/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "front-lib": {
       "root": "libs/front-lib",
       "sourceRoot": "libs/front-lib/src",
@@ -216,7 +257,16 @@
         "linter": "eslint",
         "strict": true
       }
-    }
+    },
+    "@nrwl/angular:application": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {}
   },
   "defaultProject": "directly-app"
 }
