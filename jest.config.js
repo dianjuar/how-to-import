@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/libs/common-js-lib',
     '<rootDir>/libs/front-lib',
     '<rootDir>/libs/front-angular-lib',
+    '<rootDir>/apps/commonjs-app',
   ],
 };
